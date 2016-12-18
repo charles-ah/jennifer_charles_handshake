@@ -11,8 +11,8 @@ int main() {
 
   from_server = client_handshake( &to_server );
 
-  printf("from_server: %d\n",from_server);
-  printf("to_server: %d\n",to_server);
+  //  printf("from_server: %d\n",from_server);
+  //printf("to_server: %d\n",to_server);
   
   char buffer[MESSAGE_BUFFER_SIZE];
   while(1)
@@ -23,8 +23,8 @@ int main() {
       char *p = strchr(buffer, '\n');
       *p = 0;
       
-      printf("%d\n",write( to_server, buffer, sizeof(buffer) ));
-      printf("%d\n",read( from_server, buffer, sizeof(buffer) ));
+      write( to_server, buffer, sizeof(buffer) );
+      read( from_server, buffer, sizeof(buffer) );
       printf( "received: %s\n", buffer );
     } 
   return 0;

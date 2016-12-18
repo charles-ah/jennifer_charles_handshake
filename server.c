@@ -11,16 +11,19 @@ int main() {
 
   int to_client, from_client;
   char buffer[MESSAGE_BUFFER_SIZE];
-  printf("size: %d\n",MESSAGE_BUFFER_SIZE);
+  //printf("size: %d\n",MESSAGE_BUFFER_SIZE);
   to_client = server_handshake( &from_client );
 
-  printf("from_client: %d\n",from_client);
-  printf("to_client: %d\n",to_client);
+  //printf("from_client: %d\n",from_client);
+  //printf("to_client: %d\n",to_client);
   
   while(1){
-    printf("%d\n",read( from_client, buffer, sizeof(buffer) ));
+    read( from_client, buffer, sizeof(buffer) );
+    printf("[CLIENT]: %s\n",buffer);
+	   
     process( buffer );
-    printf("%d\n",write( to_client, buffer, sizeof(buffer)));
+    printf("[SERVER]: %s\n",buffer);
+    write( to_client, buffer, sizeof(buffer));
   }
   return 0;
 }
