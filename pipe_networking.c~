@@ -26,8 +26,8 @@ int server_handshake(int* to_client)
   read(WKP,p,sizeof(p));
   printf("%s\n",p);
 
-  *to_client = WKP;
-  return private;
+  *to_client = private;
+  return WKP;
 }
 
 
